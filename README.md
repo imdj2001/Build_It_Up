@@ -1,12 +1,20 @@
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
+
+
 # Build_It_Up
 Build It Up Hackathon Project on Healthcare, My Doctor Application.
 
 ### Team-: NewIvenStack
 
 ### Members-:
-Teghdeep Kapoor (teghdeep@gmail.com)
-Dhananjay Sharma(sdhanajay006@gmail.com)
-Divyam Shrivastava( divyam09srivastava@gmail.com )
+Teghdeep Kapoor (teghdeep@gmail.com) <br />
+Dhananjay Sharma(sdhanajay006@gmail.com) <br />
+Divyam Shrivastava( divyam09srivastava@gmail.com ) <br />
 
 ### Idea -: 
 A portal which shows the description, specialty, symptoms, causes, risk factors, diagnostic methods about the searched disease so that patient can know each and everything about the disease with single click by just logging into that portal.
