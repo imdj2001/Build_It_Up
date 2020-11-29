@@ -111,13 +111,13 @@ class Ui_MyDoctorApp(object):
 
         self.retranslateUi(MyDoctorApp)
         QtCore.QMetaObject.connectSlotsByName(MyDoctorApp)
-        self.go.clicked.connect(self.diseaseSearchX)
-        self.cdoctor.clicked.connect(self.consultDoctor)
-        self.covid.clicked.connect(self.covidUI)
-        self.drugs_2.clicked.connect(self.drugUI)
+#         self.go.clicked.connect(self.diseaseSearchX)
+#         self.cdoctor.clicked.connect(self.consultDoctor)
+#         self.covid.clicked.connect(self.covidUI)
+#         self.drugs_2.clicked.connect(self.drugUI)
         self.wikipedia.clicked.connect(self.WikipediaSearch)
         self.google.clicked.connect(self.GoogleSearch)
-        self.databaseB.clicked.connect(self.savedUi)  
+#         self.databaseB.clicked.connect(self.savedUi)  
     def retranslateUi(self, MyDoctorApp):
         _translate = QtCore.QCoreApplication.translate
         MyDoctorApp.setWindowTitle(_translate("MyDoctorApp", "MainWindow"))
