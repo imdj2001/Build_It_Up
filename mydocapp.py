@@ -2,39 +2,50 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 from bs4 import BeautifulSoup
 import requests
+from helpers.ConsultDoctor import Ui_ConsultDoctor
+from helpers.drugui import Ui_Drugs
+from helpers.Analyser import Ui_Dialog
 from helpers.WikipediaUI import Ui_Wikipedia
 from helpers.GoogleUI import Ui_Google
 from helpers.dbres import Ui_Saved
-from helpers.ConsultDoctor import Ui_ConsultDoctor
-from helpers.Analyser import Ui_Dialog
 
-# class start
+
 class Ui_MyDoctorApp(object):
     def consultDoctor(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_ConsultDoctor()
         self.ui.setupUi(self.window)
         self.window.show()
-    def covidUI(self):
+
+    def drugUI(self):
         self.window = QtWidgets.QMainWindow()
-        self.ui = Ui_Dialog()
+        self.ui = Ui_Drugs()
         self.ui.setupUi(self.window)
-        self.window.show()    
+        self.window.show()
+
     def savedUi(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_Saved()
         self.ui.setupUi(self.window)
         self.window.show()
+
+    def covidUI(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_Dialog()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
     def WikipediaSearch(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_Wikipedia()
         self.ui.setupUi(self.window)
         self.window.show()
+
     def GoogleSearch(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_Google()
         self.ui.setupUi(self.window)
-        self.window.show()    
+        self.window.show()
     def setupUi(self, MyDoctorApp):
         MyDoctorApp.setObjectName("MyDoctor")
         MyDoctorApp.resize(846, 600)
@@ -129,13 +140,41 @@ class Ui_MyDoctorApp(object):
 
         self.retranslateUi(MyDoctorApp)
         QtCore.QMetaObject.connectSlotsByName(MyDoctorApp)
-#         self.go.clicked.connect(self.diseaseSearchX)
+        self.go.clicked.connect(self.diseaseSearchX)
         self.cdoctor.clicked.connect(self.consultDoctor)
         self.covid.clicked.connect(self.covidUI)
-#         self.drugs_2.clicked.connect(self.drugUI)
+        self.drugs_2.clicked.connect(self.drugUI)
         self.wikipedia.clicked.connect(self.WikipediaSearch)
         self.google.clicked.connect(self.GoogleSearch)
-        self.databaseB.clicked.connect(self.savedUi)  
+        self.databaseB.clicked.connect(self.savedUi)
+
+    def diseaseSearchX(self):
+        disease = self.query.text()
+        if len(disease)== 0:
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Warning)
+            msg.setText("Zero Input Error")
+            msg.setInformativeText("Type something to search")
+            msg.setWindowTitle('Error')
+            msg.exec_()
+        else:
+            try:
+                url = f"https://medlineplus.gov/{disease}.html"
+                html_content = requests.get(url).text
+                soup = BeautifulSoup(html_content, "html5lib")
+                main_class = soup.find("div",id="topic-summary")
+                link = main_class.find("a")
+                res = main_class.text
+                self.result.append(str(res))
+            except:
+                msg = QMessageBox()
+                msg.setIcon(QMessageBox.Warning)
+                msg.setText("Error")
+                msg.setInformativeText("Check the spelling and try again!")
+                msg.setWindowTitle('Error')
+                msg.exec_()
+
+
     def retranslateUi(self, MyDoctorApp):
         _translate = QtCore.QCoreApplication.translate
         MyDoctorApp.setWindowTitle(_translate("MyDoctorApp", "MainWindow"))
@@ -148,10 +187,9 @@ class Ui_MyDoctorApp(object):
         self.covid.setText(_translate("MyDoctorApp", "CovidAnalyser"))
         self.drugs_2.setText(_translate("MyDoctorApp", "Drugs"))
         self.credits.setText(_translate("MyDoctorApp", "Credits"))
-        self.databaseB.setText(_translate("MyDoctorApp", "Saved"))    
+        self.databaseB.setText(_translate("MyDoctorApp", "Saved"))
 
 
-# main function
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
@@ -160,3 +198,4 @@ if __name__ == "__main__":
     ui.setupUi(MyDoctorApp)
     MyDoctorApp.show()
     sys.exit(app.exec_())
+
