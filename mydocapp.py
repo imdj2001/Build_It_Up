@@ -5,9 +5,21 @@ import requests
 from helpers.WikipediaUI import Ui_Wikipedia
 from helpers.GoogleUI import Ui_Google
 from helpers.dbres import Ui_Saved
+from helpers.ConsultDoctor import Ui_ConsultDoctor
+from helpers.Analyser import Ui_Dialog
 
 # class start
 class Ui_MyDoctorApp(object):
+    def consultDoctor(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_ConsultDoctor()
+        self.ui.setupUi(self.window)
+        self.window.show()
+    def covidUI(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_Dialog()
+        self.ui.setupUi(self.window)
+        self.window.show()    
     def savedUi(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_Saved()
@@ -118,8 +130,8 @@ class Ui_MyDoctorApp(object):
         self.retranslateUi(MyDoctorApp)
         QtCore.QMetaObject.connectSlotsByName(MyDoctorApp)
 #         self.go.clicked.connect(self.diseaseSearchX)
-#         self.cdoctor.clicked.connect(self.consultDoctor)
-#         self.covid.clicked.connect(self.covidUI)
+        self.cdoctor.clicked.connect(self.consultDoctor)
+        self.covid.clicked.connect(self.covidUI)
 #         self.drugs_2.clicked.connect(self.drugUI)
         self.wikipedia.clicked.connect(self.WikipediaSearch)
         self.google.clicked.connect(self.GoogleSearch)
