@@ -11,6 +11,11 @@ class Ui_MyDoctorApp(object):
         self.ui = Ui_Wikipedia()
         self.ui.setupUi(self.window)
         self.window.show()
+    def GoogleSearch(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_Google()
+        self.ui.setupUi(self.window)
+        self.window.show()    
     def setupUi(self, MyDoctorApp):
         MyDoctorApp.setObjectName("MyDoctor")
         MyDoctorApp.resize(846, 600)
