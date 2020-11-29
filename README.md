@@ -37,8 +37,8 @@ Computer Application
 Every Person who needs to know about the Doctor near him or Any Information he/she likes to access about any Disease
 
 ### How To Run - :
-1.first go to command prompt(Anaconda)
-2.Type cd <your_folder destination>
+1.first go to command prompt(Anaconda) <br />
+2.Type cd <your_folder destination> <br />
 3.Type runsetup
 
 
