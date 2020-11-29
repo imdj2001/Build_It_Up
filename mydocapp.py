@@ -4,9 +4,15 @@ from bs4 import BeautifulSoup
 import requests
 from helpers.WikipediaUI import Ui_Wikipedia
 from helpers.GoogleUI import Ui_Google
+from helpers.dbres import Ui_Saved
 
 # class start
 class Ui_MyDoctorApp(object):
+    def savedUi(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_Saved()
+        self.ui.setupUi(self.window)
+        self.window.show()
     def WikipediaSearch(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_Wikipedia()
@@ -117,7 +123,7 @@ class Ui_MyDoctorApp(object):
 #         self.drugs_2.clicked.connect(self.drugUI)
         self.wikipedia.clicked.connect(self.WikipediaSearch)
         self.google.clicked.connect(self.GoogleSearch)
-#         self.databaseB.clicked.connect(self.savedUi)  
+        self.databaseB.clicked.connect(self.savedUi)  
     def retranslateUi(self, MyDoctorApp):
         _translate = QtCore.QCoreApplication.translate
         MyDoctorApp.setWindowTitle(_translate("MyDoctorApp", "MainWindow"))
