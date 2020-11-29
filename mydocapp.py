@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QMessageBox
 from bs4 import BeautifulSoup
 import requests
 from helpers.WikipediaUI import Ui_Wikipedia
+from helpers.GoogleUI import Ui_Google
 
 # class start
 class Ui_MyDoctorApp(object):
